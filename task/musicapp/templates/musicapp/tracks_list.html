@@ -1,0 +1,34 @@
+{% extends 'musicapp/base.html' %}
+
+{% block content %}
+  <button type="submit"><a href="search_track">Search</a></button>
+    <p>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>Rating</th>
+        </tr>
+        {% for track in tracks %}
+          <tr>
+            <td><a href="{% url 'tracks_detail' pk=track.pk %}"> {{ track.title }} </a></td>
+            <td> {{ track.genre }} </td>
+            <td> {{ track.rating }} </td>
+          </tr>
+        {% endfor %}
+        <div class="pagination">
+          <span class="step-links">
+              {% if tracks.has_previous %}
+                  <a href="?page={{ tracks.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="current">
+                  Page {{ tracks.number }} of {{ tracks.paginator.num_pages }}.
+              </span>
+              {% if tracks.has_next %}
+                  <a href="?page={{ tracks.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+        </div>
+      </table>
+    </p>
+{% endblock %}

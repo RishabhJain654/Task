@@ -1,0 +1,18 @@
+{% extends 'musicapp/base.html' %}
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    {% for genre in filter.qs %}
+      <tr>
+        <td> {{ genre.name }} </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'musicapp/base.html' %}
+
+{% block content %}
+  <button type="submit"><a href="search_genre/">Search</a></button>
+    <p>
+      <table>
+        <tr>
+          <th>Name</th>
+        </tr>
+        {% for genre in genres %}
+          <tr>
+            <td><a href="{% url 'genre_detail' pk=genre.pk %}"> {{ genre.name }} </a></td>
+          </tr>
+        {% endfor %}
+        <div class="pagination">
+          <span class="step-links">
+              {% if genres.has_previous %}
+                  <a href="?page={{ genres.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="current">
+                  Page {{ genres.number }} of {{ genres.paginator.num_pages }}.
+              </span>
+              {% if genres.has_next %}
+                  <a href="?page={{ genres.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+        </div>
+      </table>
+    </p>
+{% endblock %}

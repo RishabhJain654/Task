@@ -1,0 +1,22 @@
+{% extends 'musicapp/base.html' %}
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Rating</th>
+    </tr>
+    {% for track in filter.qs %}
+      <tr>
+        <td> {{ track.title }} </td>
+        <td> {{ track.genre }} </td>
+        <td> {{ track.rating }} </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

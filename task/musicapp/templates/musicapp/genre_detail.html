@@ -1,0 +1,10 @@
+{% extends 'musicapp/base.html' %}
+
+{% block content %}
+  <div class="content">
+    <div class="body">
+      <p>Genre Name : {{ genre.name }} </p>
+      <a class="btn btn-default" href="{% url 'genre_edit' pk=genre.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    </div>
+  </div>
+{% endblock %}

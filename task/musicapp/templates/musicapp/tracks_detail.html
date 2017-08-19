@@ -1,0 +1,12 @@
+{% extends 'musicapp/base.html' %}
+
+{% block content %}
+  <div class="content">
+    <div class="body">
+      <p>Track Title : {{ track.title }} </p>
+      <p>Track Genre : {{ track.genre }} </p>
+      <p>Track Rating : {{ track.rating }} </p>
+      <a class="btn btn-default" href="{% url 'track_edit' pk=track.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    </div>
+  </div>
+{% endblock %}
